@@ -1,0 +1,70 @@
+import Link from "next/link";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/card"
+  
+  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  import {
+    faTrashCan,
+    faPenToSquare
+  } from "@fortawesome/free-solid-svg-icons";
+
+
+
+
+export const feachCursos=()=>{
+   return fetch('http://localhost:3000/api/curso',{ cache: 'no-store'} )
+   //return fetch('https://jsonplaceholder.typicode.com/posts')
+   .then(res=>res.json());
+}
+
+export default async function Cursos(){
+    const {cursos}= await feachCursos();
+    console.log(cursos);
+    return(
+        <div>
+            <h1>Cursos</h1>
+            <Link href='/curso/new'>Nueva Curso</Link>
+            <div className="grid grid-cols-3 gap-2">
+                {
+                    cursos.map(curso=>(
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Nombre: {curso.nombre}</CardTitle>
+                                <CardTitle>Logo: {curso.logo}</CardTitle>
+                                <CardTitle>Color: {curso.color_hexa}</CardTitle>
+                                <CardTitle>Costo: {curso.costo_personalizado}</CardTitle>
+                                <CardTitle>Costo Ref: {curso.costo_referencial}</CardTitle>
+                                <CardTitle>Eslogan: {curso.eslogan}</CardTitle>
+                                <CardTitle>Descripcion: {curso.descripcion}</CardTitle>
+                                <CardTitle>Horas: {curso.horas_academicas}</CardTitle>
+                                <CardTitle>Horas reales:{curso.horas_reales}</CardTitle>
+                                 {/* 
+                                <CardTitle>{curso.area}</CardTitle>
+                                <CardTitle>{curso.dificultad}</CardTitle>
+                                */}
+                                
+                            </CardHeader>
+                            <CardFooter>
+                            <div className="space-between">
+                                <Link href={`/curso/${curso._id}/delete`}>
+                                <FontAwesomeIcon icon={faTrashCan} />
+                                </Link>
+                                <Link href={`/curso/${curso._id}/update`}>
+                                <FontAwesomeIcon icon={faPenToSquare} />
+                                </Link>
+                            </div>
+                            </CardFooter>
+                        </Card>
+                    ))
+                }
+            </div> 
+        </div>
+    )
+
+}
