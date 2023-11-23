@@ -6,6 +6,10 @@ export const feachAreas=()=>{
     return fetch('http://localhost:3000/api/area',{ cache: 'no-store'})
     .then(res=>res.json());
  }
+ export const feachDificultades=()=>{
+    return fetch('http://localhost:3000/api/dificultad',{ cache: 'no-store'})
+    .then(res=>res.json());
+ }
 
 function HomePage ({params}){
     const [newCurso,setCurso]=useState({
@@ -23,6 +27,8 @@ function HomePage ({params}){
     });
 
     const [areas, setAreas]=useState([]);
+    const [dificultades, setDificultades]=useState([]);
+
 
     const getAreas = async ()=>{
         const res = await fetch(`/api/area`);
@@ -30,6 +36,14 @@ function HomePage ({params}){
         console.log(areas);
         setAreas(areas);
     }
+
+    const getDificultades = async ()=>{
+        const res = await fetch(`/api/dificultad`);
+        const {dificultades} = await res.json();
+        console.log(dificultades);
+        setDificultades(dificultades);
+    }
+
 
     const router = useRouter();
  
@@ -49,7 +63,8 @@ function HomePage ({params}){
             horas_academicas:cursos.horas_academicas,
             horas_reales:cursos.horas_reales,
             
-            area:cursos.area
+            area:cursos.area,
+            dificultad:cursos.dificultad
         })
     }
     const handlerSubmit=async(e)=>{
@@ -88,6 +103,9 @@ function HomePage ({params}){
 
     useEffect(()=>{
         getAreas()
+     },[])
+     useEffect(()=>{
+        getDificultades()
      },[])
 
 return(
@@ -143,6 +161,14 @@ return(
             {
                 areas.map(area=>(
                     <option  value={area._id}>{area.nombre}</option>
+                ))
+            }
+        </select>
+
+        <select name="dificultad" onChange={handleSelect} value={newCurso.dificultad} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            {
+                dificultades.map(dificultad=>(
+                    <option  value={dificultad._id}>{dificultad.nombre}</option>
                 ))
             }
         </select>
