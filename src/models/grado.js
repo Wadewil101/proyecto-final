@@ -3,7 +3,7 @@ const { Schema,model,models } = mongoose;
 const gradoSchema = new Schema({
   nombre:{
     type:String,
-    unique:true,
+   
     trim:true,
     required:[true,"El grado es obligatorio"]
   }

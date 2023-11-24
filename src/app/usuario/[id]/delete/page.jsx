@@ -16,56 +16,49 @@ import {
   import {
     Button, buttonVariants} from "@/components/ui/button"
 
-
-
-
-
 function HomePage ({params}){
-    const [newArea,setNewArea]=useState({
+    const [newUsuario,setNewUsuario]=useState({
         nombre:"",
+
         
     });
 
     const router = useRouter();
     //const params = useParams();
 
-    const getArea = async ()=>{
-        const res = await fetch(`/api/area/${params.id}`);
-        const {areas} = await res.json();
-        console.log(areas);
-        setNewArea({
-            nombre:areas.nombre
+    const getUsuario = async ()=>{
+        const res = await fetch(`/api/usuario/${params.id}`);
+        const {usuarios} = await res.json();
+        console.log(usuarios);
+        setNewUsuario({
+            nombre:usuarios.nombre
            
         })
     }
-    {/** */}
     const handleDelete=async()=>{
-                const res=await fetch(`/api/area/${params.id}`,{
-                    method:"DELETE"
-                })
-                router.push('/area');
-                router.refresh(); 
-           
-        }
-    
+        const res=await fetch(`/api/usuario/${params.id}`,{
+            method:"DELETE"
+        })
+        router.push('/usuario');
+        router.refresh(); 
+   
+}
 
 
 
     useEffect(()=>{
-        getArea()
+        getUsuario()
     },[])
 
 return(
     <div>
-        
-
-            <AlertDialog>
-  <AlertDialogTrigger className={buttonVariants()} >Eliminando el Area: {newArea.nombre} </ AlertDialogTrigger>
+        <AlertDialog>
+  <AlertDialogTrigger className={buttonVariants()} >Eliminando el Usuario: {newUsuario.nombre}  </ AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Estas completamente seguro de borrar?</AlertDialogTitle>
       <AlertDialogDescription>
-        Esta acción no se puede deshacer. Esto eliminará permanentemente tu curso.
+        Esta acción no se puede deshacer. Esto eliminará permanentemente tu usuario.
         y eliminar sus datos del sistema.
       </AlertDialogDescription>
     </AlertDialogHeader>
@@ -76,12 +69,6 @@ return(
   </AlertDialogContent>
 </AlertDialog>
     </div>
-
-    
-
-
-
-
 )
 }
 export default HomePage

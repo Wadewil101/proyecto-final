@@ -2,10 +2,13 @@ import { NextResponse } from "next/server";
 import {connectDB} from '@/libs/mongoose';
 import Cursos from '@/models/curso';
 
+
+
+
 export async function GET(){
     try {
         await connectDB();
-        const cursos= await Cursos.find();
+        const cursos= await Cursos.find().populate("area").populate("dificultad");
         return NextResponse.json({
             cursos
         })

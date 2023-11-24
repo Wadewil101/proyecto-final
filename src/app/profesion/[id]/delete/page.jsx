@@ -21,7 +21,7 @@ import {
 
 
 function HomePage ({params}){
-    const [newArea,setNewArea]=useState({
+    const [newProfesion,setNewProfesion]=useState({
         nombre:"",
         
     });
@@ -29,21 +29,21 @@ function HomePage ({params}){
     const router = useRouter();
     //const params = useParams();
 
-    const getArea = async ()=>{
-        const res = await fetch(`/api/area/${params.id}`);
-        const {areas} = await res.json();
-        console.log(areas);
-        setNewArea({
-            nombre:areas.nombre
+    const getProfesion = async ()=>{
+        const res = await fetch(`/api/profesion/${params.id}`);
+        const {profesions} = await res.json();
+        console.log(profesions);
+        setNewProfesion({
+            nombre:profesions.nombre
            
         })
     }
     {/** */}
     const handleDelete=async()=>{
-                const res=await fetch(`/api/area/${params.id}`,{
+                const res=await fetch(`/api/profesion/${params.id}`,{
                     method:"DELETE"
                 })
-                router.push('/area');
+                router.push('/profesion');
                 router.refresh(); 
            
         }
@@ -52,7 +52,7 @@ function HomePage ({params}){
 
 
     useEffect(()=>{
-        getArea()
+        getProfesion()
     },[])
 
 return(
@@ -60,12 +60,12 @@ return(
         
 
             <AlertDialog>
-  <AlertDialogTrigger className={buttonVariants()} >Eliminando el Area: {newArea.nombre} </ AlertDialogTrigger>
+  <AlertDialogTrigger className={buttonVariants()} >Eliminando el Profesion: {newProfesion.nombre} </ AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
       <AlertDialogTitle>Estas completamente seguro de borrar?</AlertDialogTitle>
       <AlertDialogDescription>
-        Esta acción no se puede deshacer. Esto eliminará permanentemente tu curso.
+        Esta acción no se puede deshacer. Esto eliminará permanentemente tu profesion.
         y eliminar sus datos del sistema.
       </AlertDialogDescription>
     </AlertDialogHeader>

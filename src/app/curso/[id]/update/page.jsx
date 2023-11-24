@@ -109,44 +109,52 @@ function HomePage ({params}){
      },[])
 
 return(
-    <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-
+    <div className="  px-20 mt-1">
+                <h1 class="text-center  p-10 font-semibold italic  text-4xl"><span class=" text-dark px-2 ...">
+  Modificar curso
+</span></h1>
         <form onSubmit={handlerSubmit}>
-        <input type="text" name="nombre" placeholder="Ingrese nombre"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange} value={newCurso.nombre}/>
-
-        <input type="text" name="logo" placeholder=""
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange} value={newCurso.logo}/>
-
-        <input type="color" name="color_hexa" placeholder=""
+            <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+                <input type="text" name="nombre" placeholder="Ingrese nombre"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+                rounded-lg w-full p-4 my-1"
+                onChange={handlerChange} value={newCurso.nombre}/>
+                <input type="text" name="costo_personalizado" placeholder="Ingrese direccion "
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+                rounded-lg w-full p-4 my-1"
+                    onChange={handlerChange} value={newCurso.costo_personalizado}/>
+                     <input type="text" name="costo_referencial" placeholder="Ingrese direccion "
+                     className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+                      rounded-lg w-full p-4 my-1"
+                     onChange={handlerChange} value={newCurso.costo_referencial}/>
+                      <input type="color" name="color_hexa" placeholder=""
             
-        onChange={handlerChange} value={newCurso.color_hexa}/>
+            onChange={handlerChange} value={newCurso.color_hexa}/>
+            </div>
+            <div>
 
-        <input type="text" name="costo_personalizado" placeholder="Ingrese direccion "
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange} value={newCurso.costo_personalizado}/>
+            </div>
+            <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+            <input type="text" name="logo" placeholder=""
+                 className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+                 rounded-lg w-full p-4 my-1"
+                onChange={handlerChange} value={newCurso.logo}/>
 
-        <input type="text" name="costo_referencial" placeholder="Ingrese direccion "
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange} value={newCurso.costo_referencial}/>
 
-        <input type="text" name="eslogan" placeholder="Ingrese direccion "
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange} value={newCurso.eslogan}/>
+                <input type="text" name="eslogan" placeholder="Ingrese direccion "
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+                    rounded-lg w-full p-4 my-1"
+                onChange={handlerChange} value={newCurso.eslogan}/>
+            </div>
+       
 
         <input type="text" name="descripcion" placeholder="Ingrese direccion "
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange} value={newCurso.descripcion}/>
 
-        <input type="text" name="horas_academicas" placeholder="Ingrese direccion "
+        <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+            <input type="text" name="horas_academicas" placeholder="Ingrese direccion "
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange} value={newCurso.horas_academicas}/>
@@ -172,9 +180,11 @@ return(
                 ))
             }
         </select>
+            </div>
+       
 
         <button type="submit"
-        className="mt-3 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        className="bg-[#2563eb] text-white p-6 m-4 rounded-lg hover:bg-[#1e40af]"
         >Modificar Curso</button>
     </form>
     </div>

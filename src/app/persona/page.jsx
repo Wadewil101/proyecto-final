@@ -11,7 +11,8 @@ import {
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
   import {
     faTrashCan,
-    faPenToSquare
+    faPenToSquare,
+    faSquarePlus
   } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -28,14 +29,19 @@ export default async function Personas(){
     console.log(personas);
     return(
         <div>
-            <h1>Personas</h1>
-            <Link href='/persona/new'>Nueva Persona</Link>
+            <h1 class="text-center m-2 font-semibold italic  text-4xl"><span class=" text-dark px-2 ...">
+                Personas
+            </span></h1>
+            <Link href='/persona/new'>
+            <button class="bg-[#2563eb] text-white p-4 m-4 rounded-lg hover:bg-[#1e40af]">
+           Nueva Persona  <FontAwesomeIcon icon={faSquarePlus} /></button>
+            </Link>
             <div className="grid grid-cols-3 gap-2">
                 {
                     personas.map(persona=>(
                         <Card>
                             <CardHeader>
-                                <CardTitle>Apellidos: {persona.primer_apellido} {persona.segundo_apellido}</CardTitle>
+                            <CardTitle>Apellidos: {persona.primer_apellido} {persona.segundo_apellido}</CardTitle>
                                 <CardTitle>Nombres: {persona.nombres}</CardTitle>
                                 <CardTitle>Email: {persona.email}</CardTitle>
                                 <CardTitle>Fecha Nac.: {persona.fecha_nacimiento}</CardTitle>
@@ -45,6 +51,7 @@ export default async function Personas(){
                                 <CardTitle>Direccion: {persona.direccion}</CardTitle>
                                 <CardTitle>Telefono: {persona.telefono_1}</CardTitle>
                                 <CardTitle>Telefono Aux: {persona.telefono_2}</CardTitle>
+                                <CardTitle>Profesion: {persona.profesion.nombre}</CardTitle>
                                  {/* 
                                 <CardTitle>{persona.area}</CardTitle>
                                 <CardTitle>{persona.dificultad}</CardTitle>
@@ -52,7 +59,7 @@ export default async function Personas(){
                                 
                             </CardHeader>
                             <CardFooter>
-                            <div className="space-between">
+                            <div className="space-x-4">
                                 <Link href={`/persona/${persona._id}/delete`}>
                                 <FontAwesomeIcon icon={faTrashCan} />
                                 </Link>

@@ -2,6 +2,24 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
+  import {
+    Button, buttonVariants} from "@/components/ui/button"
+
+
+
+
+
 function HomePage ({params}){
     const [newGrado,setNewGrado]=useState({
         nombre:"",
@@ -20,20 +38,16 @@ function HomePage ({params}){
            
         })
     }
+    {/** */}
     const handleDelete=async()=>{
-        //console.log();
-        if(window.confirm(`Esta seguro de eliminar la grado ${newGrado.nombre}`)){
-            try {
                 const res=await fetch(`/api/grado/${params.id}`,{
                     method:"DELETE"
                 })
                 router.push('/grado');
                 router.refresh(); 
-            } catch (error) {
-                console.log(error)
-            }
+           
         }
-    }
+    
 
 
 
@@ -43,13 +57,31 @@ function HomePage ({params}){
 
 return(
     <div>
-        <h1>{params.id}</h1>
-            <h1>Eliminar: {newGrado.nombre}</h1>
-            <button type="button" className="bg-red-500 px-3 py-1 rounded-md" 
-                onClick={handleDelete}>
-                    Eliminar Grado
-            </button>
+        
+
+            <AlertDialog>
+  <AlertDialogTrigger className={buttonVariants()} >Eliminando el Grado: {newGrado.nombre} </ AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Estas completamente seguro de borrar?</AlertDialogTitle>
+      <AlertDialogDescription>
+        Esta acción no se puede deshacer. Esto eliminará permanentemente tu curso.
+        y eliminar sus datos del sistema.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancelar</AlertDialogCancel>
+      <AlertDialogAction onClick={handleDelete}>Continuar</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
     </div>
+
+    
+
+
+
+
 )
 }
 export default HomePage

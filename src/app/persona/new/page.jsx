@@ -76,14 +76,17 @@ function page() {
 
 
   return (
-    <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-
+    <div className="">
+<h1 class="text-center  p-10 font-semibold italic  text-4xl"><span class=" text-dark px-2 ...">
+  Nueva persona
+</span></h1>
+<div className="h-[calc(80vh-7rem)] flex justify-center items-center">
 <form onSubmit={handlerSubmit}>
-        <input type="text" name="primer_apellido" placeholder="Ingrese Primer Apellido"
+    <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+    <input type="text" name="primer_apellido" placeholder="Ingrese Primer Apellido"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
-        Ingrese el logo del Curso:
         <input type="text" name="segundo_apellido" placeholder="Ingrese Segundo Apellido"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
@@ -92,10 +95,9 @@ function page() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
-        <input type="text" name="email" placeholder="Email"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
-             rounded-lg w-full p-4 my-1"
-        onChange={handlerChange}/>
+    </div>
+        
+        <div className="grid grid-flow-row sm:grid-flow-col gap-2">
         <input type="text" name="fecha_nacimiento" placeholder="Fecha Nacimiento (dd/mm/aaaa)"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
@@ -109,17 +111,24 @@ function page() {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
-
-        
         <input type="text" name="genero" placeholder="Genero"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
+        </div>
+        <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+        <input type="text" name="email" placeholder="Email"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
+             rounded-lg w-full p-4 my-1"
+        onChange={handlerChange}/>
+        
         <input type="text" name="direccion" placeholder="Direccion"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
-         <input type="number" name="telefono_1" placeholder="Telefono"
+        </div>
+        <div className="grid grid-flow-row sm:grid-flow-col gap-2">
+        <input type="number" name="telefono_1" placeholder="Telefono"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-lg
              rounded-lg w-full p-4 my-1"
         onChange={handlerChange}/>
@@ -135,12 +144,17 @@ function page() {
                 ))
             }
         </select>
+        </div>
+        
+         
 
         
         <button type="submit"
-        className="mt-3 focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+        className="bg-[#2563eb] text-white p-6 mt-4 rounded-lg hover:bg-[#1e40af]"
         >Registrar Persona</button>
     </form>
+</div>
+
     </div>
     
   )

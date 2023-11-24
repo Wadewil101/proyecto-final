@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import {connectDB} from '@/libs/mongoose';
 import Alumnos from '@/models/alumno';
+import Personas from '@/models/persona';
+
+
 
 export async function GET(){
     try {
         await connectDB();
-        const alumnos= await Alumnos.find();
+        const alumnos= await Alumnos.find().populate("persona");
         return NextResponse.json({
         alumnos
         })

@@ -6,7 +6,7 @@ const profesionSchema = new Schema({
     nombre:{
         type: String,
         required:[true,'El nombre es requerido'],
-        unique:true,
+        
         trim:true,
     },
     

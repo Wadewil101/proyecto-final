@@ -11,42 +11,41 @@ import {
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
   import {
     faTrashCan,
-    faPenToSquare,
-    faSquarePlus
+    faPenToSquare
   } from "@fortawesome/free-solid-svg-icons";
 
 
 
 
-export const feachGrados=()=>{
-   return fetch('http://localhost:3000/api/grado',{ cache: 'no-store'} )
+export const feachProfesiones=()=>{
+   return fetch('http://localhost:3000/api/profesion',{ cache: 'no-store'} )
    //return fetch('https://jsonplaceholder.typicode.com/posts')
    .then(res=>res.json());
 }
 
-export default async function Grados(){
-    const {grados}= await feachGrados();
-    console.log(grados);
+export default async function Profesiones(){
+    const {profesiones}= await feachProfesiones();
+    console.log(profesiones);
     return(
         <div>
-            <h1 class="text-center m-2 font-semibold italic  text-4xl"><span class=" text-dark px-2 ...">
-  Grados
-</span></h1>
-            <Link href='/grado/new'><button class="bg-[#2563eb] text-white p-4 m-4 rounded-lg">
-                Nuevo Grado <FontAwesomeIcon icon={faSquarePlus} /></button></Link>
-            <div className="grid grid-cols-4 gap-2">
+            <h1>Profesiones</h1>
+            <Link href='/profesion/new'>Nueva Profesion</Link>
+            <div className="grid grid-cols-3 gap-2">
                 {
-                    grados.map(grado=>(
+                    profesiones.map(profesion=>(
                         <Card>
                             <CardHeader>
-                                <CardTitle>{grado.nombre}</CardTitle>
+                                <CardTitle>Nombre: {profesion.nombre}</CardTitle>
+                                <CardTitle>Grado: {profesion.grado.nombre}</CardTitle>
+                            
+                                
                             </CardHeader>
                             <CardFooter>
-                            <div className="space-x-4">
-                                <Link href={`/grado/${grado._id}/delete`}>
+                            <div className="space-between">
+                                <Link href={`/profesion/${profesion._id}/delete`}>
                                 <FontAwesomeIcon icon={faTrashCan} />
                                 </Link>
-                                <Link href={`/grado/${grado._id}/update`}>
+                                <Link href={`/profesion/${profesion._id}/update`}>
                                 <FontAwesomeIcon icon={faPenToSquare} />
                                 </Link>
                             </div>

@@ -15,25 +15,6 @@ import {
   } from "@fortawesome/free-solid-svg-icons";
 
 
-  export const feachPersonas=()=>{
-    return fetch('http://localhost:3000/api/persona',{ cache: 'no-store'})
-    .then(res=>res.json());
- }
- const [personas, setPersonas]=useState([]);
-
-
- const getPersonas = async ()=>{
-    const res = await fetch(`/api/persona`);
-    const {personas} = await res.json();
-    console.log(personas);
-    setPersonas(personas);
-}
-
-useEffect(()=>{
-    getPersonas()
- },[])
-
-
 
 
 export const feachAlumnos=()=>{
@@ -54,8 +35,8 @@ export default async function Alumnos(){
                     alumnos.map(alumno=>(
                         <Card>
                             <CardHeader>
-                                <CardTitle>Preinscripciones: {alumno.preinscripciones_incompletas}</CardTitle>
-                                <CardTitle>Nombres: {persona.nombres}</CardTitle>
+                                <CardTitle>Preinscripciones incompletas: {alumno.preinscripciones_incompletas}</CardTitle>
+                                <CardTitle>Nombres: {alumno.persona.nombres} {alumno.persona.primer_apellido}</CardTitle>
                                 
                                  {/* 
                                 <CardTitle>{alumno.area}</CardTitle>

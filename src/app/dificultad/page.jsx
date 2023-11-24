@@ -11,7 +11,8 @@ import {
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
   import {
     faTrashCan,
-    faPenToSquare
+    faPenToSquare,
+    faSquarePlus
   } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -28,9 +29,14 @@ export default async function Dificultades(){
     console.log(dificultades);
     return(
         <div>
-            <h1>Dificultades</h1>
-            <Link href='/dificultad/new'>Nueva Area</Link>
-            <div className="grid grid-cols-3 gap-2">
+            <h1 class="text-center m-2 font-semibold italic  text-4xl"><span class=" text-dark px-2">
+  Dificultades
+</span></h1>
+            <Link href='/dificultad/new'>
+            <button class="bg-[#2563eb] text-white p-4 m-4 rounded-lg">
+           Nueva Dificultad  <FontAwesomeIcon icon={faSquarePlus} /></button>
+            </Link>
+            <div className="grid grid-cols-4 gap-2">
                 {
                     dificultades.map(dificultad=>(
                         <Card>
@@ -38,7 +44,7 @@ export default async function Dificultades(){
                                 <CardTitle>{dificultad.nombre}</CardTitle>
                             </CardHeader>
                             <CardFooter>
-                            <div className="space-between">
+                            <div className="space-x-4">
                                 <Link href={`/dificultad/${dificultad._id}/delete`}>
                                 <FontAwesomeIcon icon={faTrashCan} />
                                 </Link>
