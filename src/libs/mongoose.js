@@ -17,4 +17,3 @@ export const connectDB = async()=>{
         return Promise.reject(false);
     }
 }
-
